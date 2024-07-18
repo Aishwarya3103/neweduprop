@@ -18,7 +18,7 @@
 	function sendOtp($phone_num){
 		
 		$username = 'AC12b222794ca57d32fd6924dc42026c57';
-		$password = '8b19f930add778c1fbc8cabb90f250ba';
+		$password = '965a568478b69a841d5cecd88b03c60a';
 		
 		$auth = $username.":".$password;
 		
@@ -60,7 +60,7 @@
 	function verifyOtp($phone_num, $code)
 	{
 		$username = 'AC12b222794ca57d32fd6924dc42026c57';
-		$password = '8b19f930add778c1fbc8cabb90f250ba';
+		$password = '965a568478b69a841d5cecd88b03c60a';
 		
 		$auth = $username.":".$password;
 		
@@ -81,7 +81,7 @@
 		curl_setopt($ch, CURLOPT_USERPWD, $auth);
 		curl_setopt($ch, CURLOPT_POSTFIELDS, $param);
 
-		$response = curl_exec($ch);
+		$result = curl_exec($ch);
 	
 		$httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 
