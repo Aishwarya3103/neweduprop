@@ -79,6 +79,16 @@
 				<div class="container pt-5 pb-5 border mt-3">
 					<form id="publish-form" method="POST" action="controller/list-add.php" enctype="multipart/form-data">
 						<div id="accordion">
+								<?php
+								session_start();
+								
+									if(isset($_SESSION['message'])){
+										echo $_SESSION['message'];
+										unset($_SESSION['message']);
+										
+									}
+									
+								?>
 							<div class="card">
 								<div class="card-header" id="headingOne">
 									<h5 class="mb-0">

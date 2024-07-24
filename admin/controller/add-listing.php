@@ -1,8 +1,11 @@
 <?php
 
-include('../config.php');
+include('../../config.php');
 
 session_start();
+
+print_r($_POST);
+exit;
 
 if(isset($_POST)){
     
@@ -23,23 +26,12 @@ if(isset($_POST)){
 	
 	$filename = uploadImage($_FILES);
 	
-	
-		
-		$seller = "Select id from seller where phone_num = ".$phone_num ." and seller_name = '" . $sellerName ."'";
-		
-		$conn->query($seller);
-		if ($result->num_rows > 0) {
-			$seller_id = $result["id"];
-		}
-		else{
-			
-			$seller_query = "Insert into seller(seller_name, seller_email, show_email, phone_num) values ('".$sellerName."', '". $email ."', ". $show_email.", ". $phone_num.")";
+	if($filename){
+    $seller_query = "Insert into seller(seller_name, seller_email, show_email, phone_num) values ('".$sellerName."', '". $email ."', ". $show_email.", ". $phone_num.")";
 
-			if ($conn->query($seller_query) === TRUE) {
-				$seller_id = $conn->insert_id;
-			}
-		}
-		
+    if ($conn->query($seller_query) === TRUE) {
+        $seller_id = $conn->insert_id;
+        
         $listing_query = "Insert into listing(seller_id, category, title, list_img, price, region, city, area, address) values ('".$seller_id."', '". $category ."', '". $title."', '". $filename."', ". $price.", '". $region."', '". $city."', '". $area."', '". $address."')";
         
         if ($conn->query($listing_query) === TRUE) {
@@ -49,11 +41,14 @@ if(isset($_POST)){
 
         }
         echo "New record created successfully";
-    
-    header('Location: ../publish-form.php');
+    } else {
+        echo "Error: " . $seller . "<br>" . $conn->error;
+    }
+    header('Location: ../publish-form.html');
     exit;
 	}
 
+}
 
 function uploadImage($files){
 	
@@ -74,19 +69,17 @@ function uploadImage($files){
             if(move_uploaded_file($files["image"]["tmp_name"], $targetFilePath)){ 
                 return $fileName;
             }else{ 
-				$_SESSION['message'] = 'Sorry, there was an error uploading your file';
-				
+                $statusMsg = "Sorry, there was an error uploading your file.";
+				return false;
             } 
         }else{ 
-            $_SESSION['message'] = 'Sorry, only JPG, JPEG, PNG, & GIF files are allowed to upload.';
-				
+            $statusMsg = 'Sorry, only JPG, JPEG, PNG, & GIF files are allowed to upload.';
+				return false;
         } 
     }else{ 
-        $_SESSION['message'] = 'Please select a file to upload.';
-				
+        $statusMsg = 'Please select a file to upload.';
+				return false;
     }
-	header('Location: ../publish-form.php');
-    exit;
 	
 }
 

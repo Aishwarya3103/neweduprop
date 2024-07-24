@@ -23,7 +23,7 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 		<link rel="stylesheet" href="css/style.css" type="text/css">
 	</head>
-	<body>
+	<body class="home">
 		<!-- Page Preloder -->
 		<div id="preloder">
 			<div class="loader"></div>
@@ -38,31 +38,39 @@
 						</div>
 					</div>
 					<div class="col-lg-8 col-md-8">
-						<div class="header__nav justify-content-center">
+						<div class="header__nav">
 							<nav class="header__menu mobile-menu">
 								<ul>
-									<li class="active"><a href="./index.html">Home</a></li>
-									<li><a href="publish-form.html">Publish AD</a></li>
+									<li class="active home-nav"><a href="./index.html">Home</a></li>
+								<li><a href="publish-form.html">Publish AD</a></li>
 									<li><a href="#">FAQ</a></li>
 									<li><a href="./blog.html">Blog</a></li>
 								</ul>
 							</nav>
-						</div>
+						</div>  
 					</div>
-					<div class="col-lg-2 col-md-2 text-right">
+					<!-- <div class="col-lg-2 col-md-2 text-right">
 						<div class="header__menu__right header__nav_login pr-5">
-							<div class="dropdown">
-								<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									<i class="fa fa-user"></i>
-								</a>
-								<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-									<a class="dropdown-item" href="#" id="loginuser">Login</a>
-									<a class="dropdown-item" href="#" id="signout">Signout</a>
-								</div>
-							</div>
+						<a class="text-white" href="#" id="loginuser"><strong>Login</strong></a>
+							
 							
 						</div>
-					</div>
+					</div> -->
+					<div class="header__menu__right" style="display:inline-flex;margin-top:2em;">
+                           <a href="javascript:void(0);" id="loginuser"><strong style="font-size:2em;">Login</strong></a>
+                           <!--  <a href="#" class="login-btn"><i class="fa fa-user"></i></a> -->
+						   <div class="signupuser">
+						   <a href="#" class="login-btn"><i class="fa fa-user"></i>
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							</a>
+								</a>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+									
+									<a class="dropdown-item" href="#" id="signout">Signout</a>
+									<a class="dropdown-item" href="#" id="">Profile</a>
+								</div>
+						   </div>
+                        </div>
 				</div>
 				<div id="mobile-menu-wrap"></div>
 			</div>
@@ -395,14 +403,14 @@
 									<label for="phone">Phone Number</label>
 									<input type="text" class="form-control" id="phone-num" aria-describedby="phoneHelp" placeholder="Enter Phone Number">
 								</div>
-								<button type="button" class="btn btn-primary float-right" id="generateotp">Submit</button>
+								<button type="button" class="btn btn-primary float-right" id="generateotp">Get Otp</button>
 							</div>
 							<div class="otp_field" style="display:none">
 								<div class="form-group">
 									<label for="otp">OTP code</label>
 									<input type="text" class="form-control" id="verify-otp" aria-describedby="phoneHelp" placeholder="Enter 6 digit OTP Code">
 								</div>
-								<button type="button" class="btn btn-primary float-right" id="verify_otp">Verify</button>
+								<button type="button" class="btn btn-primary float-right" id="verify_otp">submit</button>
 							</div>
 							
 						</form>

@@ -11,7 +11,7 @@ if(isset($_POST)){
     $user_email = $_POST["user_email"];
     $password = $_POST["password"];
 
-    $sql = "Select pswd from users where user_email = '".$user_email."'";
+    $sql = "Select first_name, pswd from users where user_email = '".$user_email."'";
 	
 	$result = $conn->query($sql);
 	
@@ -19,7 +19,8 @@ if(isset($_POST)){
 	  // output data of each row
 	  while($row = $result->fetch_assoc()) {
 		  if($password == $row["pswd"]){
-			  header('Location: index.html');
+			  $_SESSION['username'] = $row['first_name'];
+			  header('Location: index.php');
 			  exit;
 		  }else{
 			  echo "Incorrect Password";

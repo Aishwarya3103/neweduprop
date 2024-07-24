@@ -49,11 +49,11 @@
 															<span class="icon_star"></span>
 															<span class="icon_star-half_alt"></span>
 														</div>
-														<h6>$40 - $70</h6>
+														<h6><?= $row["price"] ?></h6>
 													</div>
 													<ul>
-														<li><span class="icon_pin_alt"></span> <?= $row["address"] ?></li>
-														<li><span class="icon_phone"></span> (+12) <?= $row["phone_num"] ?></li>
+														<li><span class="icon_pin_alt"></span> <?= $row["address"] . ", " . $row["city"] ?></li>
+														<li><span class="icon_phone"></span> <?= $row["phone_num"] ?></li>
 													</ul>
 												</div>
 												<div class="listing__item__text__info">
@@ -71,7 +71,7 @@
 	  $records = [];
 	}
 ?>
-		
+	<!--	
 									<div class="col-lg-4 col-md-6">
 										<div class="listing__item shadow">
 											<div class="listing__item__pic set-bg" data-setbg="img/listing/152_thumbnail.jpg">
@@ -261,7 +261,7 @@
 												</div>
 											</div>
 										</div>
-									</div>
+									</div>-->
 								</div>
 							</div>
 						</div>
